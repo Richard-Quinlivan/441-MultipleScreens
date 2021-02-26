@@ -11,10 +11,10 @@ class SecondViewController: UIViewController {
     
     @IBOutlet var ball : UIButton!
     
-//    let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(swipe))
     var FirstViewController : ViewController?
     
-    var xPosition:CGFloat = 0
+    var xPosition:CGFloat = 0.0
+    var yPosition:CGFloat = 0.0
     var timer = Timer()
     var horizontalMovement:CGFloat = 13.0
     var verticalMovement:CGFloat = 13.0
@@ -23,28 +23,30 @@ class SecondViewController: UIViewController {
     var rightEdge:CGFloat = UIScreen.main.bounds.size.width
     var topEdge:CGFloat = 0.0
     var bottomEdge:CGFloat = UIScreen.main.bounds.size.height
-    
+    var ballHidden:Bool = false
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        ball.center.y = 0.0
+        ball.center.y = yPosition
         ball.center.x = xPosition
+        ball.isHidden = ballHidden
+
         startBallMoving()
-//        FirstViewController?.swipeUp.direction = UISwipeGestureRecognizer.Direction.down
-//        print(FirstViewController!.swipeUp)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.destination is ViewController){
-            let firstVC = segue.destination as? ViewController
-            firstVC?.xPosition = ball.center.x
-            firstVC?.horizontalMovement = 13.0
-            firstVC?.verticalMovement = -13.0
-        }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        FirstViewController?.xPosition = ball.center.x
+        FirstViewController?.yPosition = ball.center.y
+        FirstViewController?.horizontalMovement = horizontalMovement
+        FirstViewController?.verticalMovement = verticalMovement
+        FirstViewController?.startAgain()
     }
+    
 
     @IBAction func startBallMoving(){
         ball.isHidden = false
@@ -58,12 +60,23 @@ class SecondViewController: UIViewController {
             horizontalMovement = -horizontalMovement
         }
         if(ball.center.y <= topEdge){
-            verticalMovement = 0
-            horizontalMovement = 0
-            ball.isHidden = true
+            if(ball.isHidden){
+                verticalMovement = 13.0
+            }
+            else{
+                ball.isHidden = true
+                ball.center.y = bottomEdge - 5
+                FirstViewController?.ball.isHidden = false
+            }
         }
         if(ball.center.y >= bottomEdge){
-            verticalMovement = -verticalMovement
+            if(ball.isHidden){
+                ball.isHidden = false
+                ball.center.y = topEdge + 5
+            }
+            else{
+                verticalMovement = -13.0
+            }
         }
     }
 }

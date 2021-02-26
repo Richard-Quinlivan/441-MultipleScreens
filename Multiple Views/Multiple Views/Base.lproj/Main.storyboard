@@ -23,9 +23,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="qqK-vK-49T" appends="YES" id="QE6-7n-L9g"/>
-                                </connections>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IqJ-we-glM">
                                 <rect key="frame" x="170" y="119" width="34" height="30"/>
@@ -46,17 +43,18 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <gestureRecognizers/>
                         <connections>
-                            <outletCollection property="gestureRecognizers" destination="qqK-vK-49T" appends="YES" id="3Rj-FY-UxC"/>
+                            <outletCollection property="gestureRecognizers" destination="sF9-sW-acx" appends="YES" id="JeY-gA-goF"/>
                         </connections>
                     </view>
+                    <navigationItem key="navigationItem" id="LVu-Z7-2Oe"/>
                     <connections>
                         <outlet property="ball" destination="vCz-Kk-aL8" id="di2-AT-OJF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="down" id="qqK-vK-49T">
+                <swipeGestureRecognizer direction="up" id="sF9-sW-acx">
                     <connections>
-                        <segue destination="eom-1H-755" kind="show" id="W14-jh-Wfj"/>
+                        <segue destination="eom-1H-755" kind="show" id="GMD-7Z-JCY"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
@@ -77,15 +75,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rHr-OI-8Kw">
+                                <rect key="frame" x="77" y="143" width="30" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <state key="normal" title="O"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nfr-IX-g5Y"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="Cze-gy-jI9"/>
+                    <connections>
+                        <outlet property="ball" destination="rHr-OI-8Kw" id="NgZ-qD-CS6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jpa-5b-Cnq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="370" y="38"/>
+            <point key="canvasLocation" x="545" y="38"/>
         </scene>
     </scenes>
     <resources>
